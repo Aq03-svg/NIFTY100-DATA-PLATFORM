@@ -1,0 +1,331 @@
+================================================================================
+FILE: analysis.xlsx
+================================================================================
+Rows: 21
+Columns: 6
+
+Columns:
+ - Bluestock Fintech — Nifty 100  |  Analysis  |  20 records
+ - Unnamed: 1
+ - Unnamed: 2
+ - Unnamed: 3
+ - Unnamed: 4
+ - Unnamed: 5
+
+First 3 Rows:
+
+  Bluestock Fintech — Nifty 100  |  Analysis  |  20 records  ...            Unnamed: 5
+0                                                 id         ...                   roe
+1                                                  1         ...     10 Years:     17%
+2                                                 10         ...  5 Years          14%
+
+[3 rows x 6 columns]
+
+
+
+================================================================================
+FILE: balancesheet.xlsx
+================================================================================
+Rows: 1313
+Columns: 13
+
+Columns:
+ - Bluestock Fintech — Nifty 100  |  Balance Sheet  |  1,312 records
+ - Unnamed: 1
+ - Unnamed: 2
+ - Unnamed: 3
+ - Unnamed: 4
+ - Unnamed: 5
+ - Unnamed: 6
+ - Unnamed: 7
+ - Unnamed: 8
+ - Unnamed: 9
+ - Unnamed: 10
+ - Unnamed: 11
+ - Unnamed: 12
+
+First 3 Rows:
+
+  Bluestock Fintech — Nifty 100  |  Balance Sheet  |  1,312 records  ...   Unnamed: 12
+0                                                 id                 ...  total_assets
+1                                                136                 ...           907
+2                                                137                 ...          1139
+
+[3 rows x 13 columns]
+
+
+
+================================================================================
+FILE: cashflow.xlsx
+================================================================================
+Rows: 1188
+Columns: 7
+
+Columns:
+ - Bluestock Fintech — Nifty 100  |  Cash Flow  |  1,187 records
+ - Unnamed: 1
+ - Unnamed: 2
+ - Unnamed: 3
+ - Unnamed: 4
+ - Unnamed: 5
+ - Unnamed: 6
+
+First 3 Rows:
+
+  Bluestock Fintech — Nifty 100  |  Cash Flow  |  1,187 records  ...     Unnamed: 6
+0                                                 id             ...  net_cash_flow
+1                                                 37             ...           -152
+2                                                 38             ...           -374
+
+[3 rows x 7 columns]
+
+
+
+================================================================================
+FILE: companies.xlsx
+================================================================================
+Rows: 93
+Columns: 12
+
+Columns:
+ - Mkt Fintech — Nifty 100  |  Companies  |  92 records
+ - Unnamed: 1
+ - Unnamed: 2
+ - Unnamed: 3
+ - Unnamed: 4
+ - Unnamed: 5
+ - Unnamed: 6
+ - Unnamed: 7
+ - Unnamed: 8
+ - Unnamed: 9
+ - Unnamed: 10
+ - Unnamed: 11
+
+First 3 Rows:
+
+  Mkt Fintech — Nifty 100  |  Companies  |  92 records  ...     Unnamed: 11
+0                                                 id    ...  roe_percentage
+1                                                ABB    ...            34.9
+2                                         ADANIENSOL    ...            8.59
+
+[3 rows x 12 columns]
+
+
+
+================================================================================
+FILE: documents.xlsx
+================================================================================
+Rows: 1586
+Columns: 4
+
+Columns:
+ - Bluestock Fintech — Nifty 100  |  Documents  |  1,585 records
+ - Unnamed: 1
+ - Unnamed: 2
+ - Unnamed: 3
+
+First 3 Rows:
+
+  Bluestock Fintech — Nifty 100  |  Documents  |  1,585 records  ...                                         Unnamed: 3
+0                                                 id             ...                                      Annual_Report
+1                                                  1             ...  https://www.bseindia.com/xml-data/corpfiling/A...
+2                                                  2             ...  https://www.bseindia.com/xml-data/corpfiling/A...
+
+[3 rows x 4 columns]
+
+
+
+================================================================================
+FILE: financial_ratios.xlsx
+================================================================================
+Rows: 1184
+Columns: 16
+
+Columns:
+ - id
+ - company_id
+ - year
+ - net_profit_margin_pct
+ - operating_profit_margin_pct
+ - return_on_equity_pct
+ - debt_to_equity
+ - interest_coverage
+ - asset_turnover
+ - free_cash_flow_cr
+ - capex_cr
+ - earnings_per_share
+ - book_value_per_share
+ - dividend_payout_ratio_pct
+ - total_debt_cr
+ - cash_from_operations_cr
+
+First 3 Rows:
+
+   id company_id  ... total_debt_cr  cash_from_operations_cr
+0   1        ABB  ...             0                    101.0
+1   2        ABB  ...             0                    155.0
+2   3        ABB  ...             0                      0.0
+
+[3 rows x 16 columns]
+
+
+
+================================================================================
+FILE: market_cap.xlsx
+================================================================================
+Rows: 552
+Columns: 9
+
+Columns:
+ - id
+ - company_id
+ - year
+ - market_cap_crore
+ - enterprise_value_crore
+ - pe_ratio
+ - pb_ratio
+ - ev_ebitda
+ - dividend_yield_pct
+
+First 3 Rows:
+
+   id company_id  year  ...  pb_ratio  ev_ebitda  dividend_yield_pct
+0   1        ABB  2019  ...     14.26      22.84                0.84
+1   2        ABB  2020  ...     13.03      24.93                3.90
+2   3        ABB  2021  ...      6.67       7.58                1.58
+
+[3 rows x 9 columns]
+
+
+
+================================================================================
+FILE: peer_groups.xlsx
+================================================================================
+Rows: 56
+Columns: 4
+
+Columns:
+ - id
+ - peer_group_name
+ - company_id
+ - is_benchmark
+
+First 3 Rows:
+
+   id peer_group_name company_id  is_benchmark
+0   1   Private Banks   HDFCBANK          True
+1   2   Private Banks  ICICIBANK         False
+2   3   Private Banks   AXISBANK         False
+
+
+
+================================================================================
+FILE: profitandloss.xlsx
+================================================================================
+Rows: 1277
+Columns: 15
+
+Columns:
+ - Bluestock Fintech — Nifty 100  |  Profit & Loss  |  1,276 records
+ - Unnamed: 1
+ - Unnamed: 2
+ - Unnamed: 3
+ - Unnamed: 4
+ - Unnamed: 5
+ - Unnamed: 6
+ - Unnamed: 7
+ - Unnamed: 8
+ - Unnamed: 9
+ - Unnamed: 10
+ - Unnamed: 11
+ - Unnamed: 12
+ - Unnamed: 13
+ - Unnamed: 14
+
+First 3 Rows:
+
+  Bluestock Fintech — Nifty 100  |  Profit & Loss  |  1,276 records  ...      Unnamed: 14
+0                                                 id                 ...  dividend_payout
+1                                                 61                 ...               25
+2                                                 62                 ...               25
+
+[3 rows x 15 columns]
+
+
+
+================================================================================
+FILE: prosandcons.xlsx
+================================================================================
+Rows: 17
+Columns: 4
+
+Columns:
+ - Bluestock Fintech — Nifty 100  |  Pros & Cons  |  16 records
+ - Unnamed: 1
+ - Unnamed: 2
+ - Unnamed: 3
+
+First 3 Rows:
+
+  Bluestock Fintech — Nifty 100  |  Pros & Cons  |  16 records  ...                                     Unnamed: 3
+0                                                 id            ...                                           cons
+1                                                  1            ...  Stock is trading at 2.76 times its book value
+2                                                  2            ...       Company has low interest coverage ratio.
+
+[3 rows x 4 columns]
+
+
+
+================================================================================
+FILE: sectors.xlsx
+================================================================================
+Rows: 92
+Columns: 6
+
+Columns:
+ - id
+ - company_id
+ - broad_sector
+ - sub_sector
+ - index_weight_pct
+ - market_cap_category
+
+First 3 Rows:
+
+   id  company_id  ... index_weight_pct market_cap_category
+0   1         ABB  ...             0.81           Large Cap
+1   2  ADANIENSOL  ...             0.65           Large Cap
+2   3    ADANIENT  ...             1.50           Large Cap
+
+[3 rows x 6 columns]
+
+
+
+================================================================================
+FILE: stock_prices.xlsx
+================================================================================
+Rows: 5520
+Columns: 9
+
+Columns:
+ - id
+ - company_id
+ - date
+ - open_price
+ - high_price
+ - low_price
+ - close_price
+ - volume
+ - adjusted_close
+
+First 3 Rows:
+
+   id company_id        date  ...  close_price    volume  adjusted_close
+0   1        ABB  2020-01-01  ...      1964.30  26184368         1964.30
+1   2        ABB  2020-02-01  ...      2165.21   1668316         2165.21
+2   3        ABB  2020-03-01  ...      2198.78  20578107         2198.78
+
+[3 rows x 9 columns]
+
+
+
