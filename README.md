@@ -1,54 +1,172 @@
 # NIFTY100 Data Platform
 
-## Overview
-
-This project is a production-style Data Engineering platform designed to ingest, validate, normalize, and analyze financial datasets related to NIFTY 100 companies.
-
-The system performs automated ETL operations, validates data quality using predefined rules, stores clean data in SQLite, and provides a robust foundation for advanced financial analytics.
+An end-to-end Data Engineering project that builds a production-style ETL pipeline for NIFTY100 company financial data.
 
 ---
 
-## Sprint 1 Objectives
+## Project Overview
 
-- Environment Setup
-- Excel Data Loader
-- Data Normalization
-- Data Quality Validation
-- SQLite Database Design
-- Full ETL Pipeline
-- Unit Testing
+This project ingests multiple Excel datasets, validates data quality, loads the cleaned data into SQLite, and prepares it for analytics and dashboarding.
+
+The pipeline performs automated validation, generates audit reports, and creates a centralized relational database for downstream analysis.
 
 ---
 
-## Technology Stack
+## Features
 
-- Python
-- Pandas
-- NumPy
-- SQLAlchemy
-- SQLite
-- OpenPyXL
-- Jupyter Notebook
-- Pytest
-- Git
+- Multi-file Excel ingestion
+- Automated ETL pipeline
+- Data validation framework
+- SQLite database integration
+- Audit report generation
+- Foreign key validation
+- Primary key validation
+- Missing value detection
+- Duplicate detection
+- Stock price validation
+- Sales validation
 
 ---
 
 ## Project Structure
 
 ```
-config/
-data/
-db/
-docs/
-logs/
-notebooks/
-src/
-tests/
+NIFTY100-DATA-PLATFORM/
+
+├── config/
+├── data/
+│   ├── raw/
+│   ├── processed/
+│   └── output/
+│
+├── db/
+├── docs/
+├── logs/
+├── notebooks/
+├── reports/
+├── src/
+│   ├── analytics/
+│   ├── etl/
+│   ├── utils/
+│   └── validation/
+│
+├── tests/
+├── README.md
+├── requirements.txt
+└── .gitignore
 ```
 
 ---
 
-## Status
+## ETL Workflow
 
-Sprint 1 – Data Foundation (In Progress)
+```
+Excel Files
+      │
+      ▼
+Excel Loader
+      │
+      ▼
+Data Validation
+      │
+      ▼
+Validation Report
+      │
+      ▼
+SQLite Schema
+      │
+      ▼
+Database Loader
+      │
+      ▼
+Analytics Ready Database
+```
+
+---
+
+## Datasets
+
+The project processes:
+
+- Companies
+- Balance Sheet
+- Profit & Loss
+- Cash Flow
+- Financial Ratios
+- Market Capitalization
+- Stock Prices
+- Documents
+- Analysis
+- Pros & Cons
+- Sectors
+- Peer Groups
+
+---
+
+## Data Quality Checks
+
+The validation engine performs:
+
+- Missing Values
+- Duplicate Rows
+- Empty Columns
+- Invalid Years
+- Negative Numeric Values
+- Primary Key Validation
+- Foreign Key Validation
+- Stock Price Validation
+- Positive Sales Validation
+
+---
+
+## Database
+
+SQLite is used as the project database.
+
+The pipeline automatically:
+
+- Creates schema
+- Loads all tables
+- Preserves relational structure
+
+---
+
+## Output Files
+
+```
+data/output/load_audit.csv
+data/output/validation_failures.csv
+db/nifty100.db
+```
+
+---
+
+## Technologies Used
+
+- Python
+- Pandas
+- SQLite
+- SQL
+- VS Code
+- Git
+- GitHub
+
+---
+
+## Future Enhancements
+
+- Interactive Streamlit dashboard
+- SQL analytics
+- Automated logging
+- Scheduled ETL execution
+- Cloud deployment
+
+---
+
+## Author
+
+**Aqeeb Javeed Shaikh**
+
+AI & Machine Learning Undergraduate
+
+Data Science & Machine Learning Enthusiast
