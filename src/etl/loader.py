@@ -1,3 +1,4 @@
+from src.utils.logger import logger
 from pathlib import Path
 from datetime import datetime
 import pandas as pd
@@ -20,7 +21,7 @@ class ExcelLoader:
             normaliser = DataNormaliser()
             df = normaliser.normalise_dataset(df)
 
-            print(f"Loaded {filename}")
+            logger.info(f"Loaded {filename}")
 
             self.audit.append({
                 "file": filename,

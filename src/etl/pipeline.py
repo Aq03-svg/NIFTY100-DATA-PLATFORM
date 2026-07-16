@@ -1,3 +1,4 @@
+from src.utils.logger import logger
 from src.etl.loader import ExcelLoader
 from src.validation.validator import DataValidator
 from src.etl.sqlite_loader import SQLiteLoader
@@ -6,9 +7,9 @@ from src.etl.db_loader import DatabaseLoader
 
 def main():
 
-    print("=" * 70)
-    print("NIFTY100 DATA PLATFORM ETL PIPELINE")
-    print("=" * 70)
+    logger.info("=" * 70)
+    logger.info("NIFTY100 DATA PLATFORM ETL PIPELINE")
+    logger.info("=" * 70)
 
     # 1. Load Excel Files
     loader = ExcelLoader("data/raw")
@@ -74,7 +75,7 @@ def main():
 
     database.close()
 
-    print("\nETL Pipeline Completed Successfully")
+    logger.info("ETL Pipeline Completed Successfully")
 
 
 if __name__ == "__main__":

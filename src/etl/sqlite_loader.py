@@ -1,3 +1,4 @@
+from src.utils.logger import logger
 import sqlite3
 from pathlib import Path
 
@@ -22,7 +23,7 @@ class SQLiteLoader:
 
         self.connection.commit()
 
-        print("Database Schema Created Successfully.")
+        logger.info("Database Schema Created Successfully.")
 
     def close(self):
 

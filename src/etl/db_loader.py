@@ -1,3 +1,4 @@
+from src.utils.logger import logger
 import sqlite3
 import pandas as pd
 
@@ -20,7 +21,7 @@ class DatabaseLoader:
 
         rows = len(dataframe)
 
-        print(f"✓ {table_name:<20} {rows} rows loaded")
+        logger.info(f"{table_name:<20} : {rows} rows loaded")
 
     def execute_sql(self, sql):
 

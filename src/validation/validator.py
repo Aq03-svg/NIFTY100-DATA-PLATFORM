@@ -1,3 +1,4 @@
+from src.utils.logger import logger
 import pandas as pd
 
 
@@ -204,4 +205,4 @@ class DataValidator:
                 "failed_records": int(invalid.sum())
             })
 
-        print("\nValidation Report Generated")
+        logger.info("Validation Report Generated")
