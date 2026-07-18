@@ -80,3 +80,22 @@ print("LOADED NEW QUERIES FILE")
 
 print(">>> queries.py loaded <<<")
 print("Has COMPANY_SNAPSHOT:", "COMPANY_SNAPSHOT" in globals())
+
+COMPANY_PROFILE = """
+SELECT
+    company_name,
+    website,
+    about_company
+FROM companies
+WHERE id = '{}';
+"""
+
+COMPANY_RATIOS = """
+SELECT
+    roce_percentage,
+    roe_percentage,
+    face_value,
+    book_value
+FROM companies
+WHERE id = '{}';
+"""

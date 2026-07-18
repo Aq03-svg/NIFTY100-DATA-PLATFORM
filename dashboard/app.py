@@ -108,11 +108,31 @@ snapshot = run_query(
 )
 
 components.company_snapshot(snapshot)
+profile = run_query(
+    queries.COMPANY_PROFILE.format(selected_company)
+)
+
+ratios = run_query(
+    queries.COMPANY_RATIOS.format(selected_company)
+)
+components.company_profile(profile)
+components.company_ratios(ratios)
 history = run_query(
     queries.COMPANY_FINANCIAL_HISTORY.format(selected_company)
 )
 
 components.financial_history(history)
+st.subheader("📈 Financial Trends")
+
+col1, col2 = st.columns(2)
+
+with col1:
+    revenue_fig = charts.revenue_trend_chart(history)
+    st.plotly_chart(revenue_fig, width="stretch")
+
+with col2:
+    profit_fig = charts.profit_trend_chart(history)
+    st.plotly_chart(profit_fig, width="stretch")
 
 stock_df = run_query(
     queries.COMPANY_STOCK_HISTORY.format(selected_company)

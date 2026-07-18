@@ -65,3 +65,42 @@ def financial_history(df):
     height=300,
     hide_index=True
 )
+    
+def company_profile(df):
+
+    import streamlit as st
+
+    st.subheader("🏢 Company Profile")
+
+    if df.empty:
+        st.warning("No company profile available.")
+        return
+
+    row = df.iloc[0]
+
+    st.markdown(f"### {row['company_name']}")
+
+    st.markdown(f"**🌐 Website:** {row['website']}")
+
+    st.markdown("**📝 About Company**")
+
+    st.write(row["about_company"])
+
+def company_ratios(df):
+
+    import streamlit as st
+
+    st.subheader("📈 Financial Ratios")
+
+    if df.empty:
+        st.warning("No financial ratio data available.")
+        return
+
+    row = df.iloc[0]
+
+    col1, col2, col3, col4 = st.columns(4)
+
+    col1.metric("ROCE", f"{row['roce_percentage']}%")
+    col2.metric("ROE", f"{row['roe_percentage']}%")
+    col3.metric("Book Value", f"₹{row['book_value']}")
+    col4.metric("Face Value", f"₹{row['face_value']}")

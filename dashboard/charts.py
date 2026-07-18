@@ -55,3 +55,37 @@ def stock_price_chart(df):
     )
 
     return fig
+
+import plotly.express as px
+
+
+def revenue_trend_chart(df):
+
+    fig = px.line(
+        df,
+        x="year",
+        y="sales",
+        markers=True,
+        title="Revenue Trend"
+    )
+
+    fig.update_layout(xaxis_title="Year",
+                      yaxis_title="Sales (₹ Cr)")
+
+    return fig
+
+
+def profit_trend_chart(df):
+
+    fig = px.line(
+        df,
+        x="year",
+        y="net_profit",
+        markers=True,
+        title="Net Profit Trend"
+    )
+
+    fig.update_layout(xaxis_title="Year",
+                      yaxis_title="Net Profit (₹ Cr)")
+
+    return fig
