@@ -114,3 +114,76 @@ def return_on_assets(net_profit, total_assets):
         return None
 
     return round((net_profit / total_assets) * 100, 2)
+
+def debt_to_equity(total_debt, shareholder_equity):
+    """
+    Debt-to-Equity Ratio
+
+    Formula:
+        Total Debt / Shareholder Equity
+
+    Returns:
+        float | None
+    """
+
+    if total_debt is None or shareholder_equity is None:
+        return None
+
+    if shareholder_equity == 0:
+        return None
+
+    return round(total_debt / shareholder_equity, 2)
+
+def interest_coverage_ratio(ebit, interest_expense):
+    """
+    Interest Coverage Ratio
+
+    Formula:
+        EBIT / Interest Expense
+
+    Returns:
+        float | None
+    """
+
+    if ebit is None or interest_expense is None:
+        return None
+
+    if interest_expense == 0:
+        return None
+
+    return round(ebit / interest_expense, 2)
+
+def net_debt(total_debt, cash_and_equivalents):
+    """
+    Net Debt
+
+    Formula:
+        Total Debt - Cash & Cash Equivalents
+
+    Returns:
+        float | None
+    """
+
+    if total_debt is None or cash_and_equivalents is None:
+        return None
+
+    return round(total_debt - cash_and_equivalents, 2)
+
+def asset_turnover_ratio(revenue, average_total_assets):
+    """
+    Asset Turnover Ratio
+
+    Formula:
+        Revenue / Average Total Assets
+
+    Returns:
+        float | None
+    """
+
+    if revenue is None or average_total_assets is None:
+        return None
+
+    if average_total_assets == 0:
+        return None
+
+    return round(revenue / average_total_assets, 2)

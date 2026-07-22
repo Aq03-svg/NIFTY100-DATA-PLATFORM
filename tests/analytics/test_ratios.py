@@ -6,6 +6,10 @@ from src.analytics.ratios import (
     return_on_equity,
     return_on_capital_employed,
     return_on_assets,
+    debt_to_equity,
+    interest_coverage_ratio,
+    net_debt,
+    asset_turnover_ratio,
 )
 
 
@@ -124,3 +128,95 @@ def test_return_on_assets_none_profit():
 
 def test_return_on_assets_negative_profit():
     assert return_on_assets(-100, 2000) == -5.00
+
+# ==========================================================
+# Debt-to-Equity Ratio Tests
+# ==========================================================
+
+def test_debt_to_equity_normal():
+    assert debt_to_equity(2000, 1000) == 2.00
+
+
+def test_debt_to_equity_zero_equity():
+    assert debt_to_equity(2000, 0) is None
+
+
+def test_debt_to_equity_none_equity():
+    assert debt_to_equity(2000, None) is None
+
+
+def test_debt_to_equity_none_debt():
+    assert debt_to_equity(None, 1000) is None
+
+
+def test_debt_to_equity_zero_debt():
+    assert debt_to_equity(0, 1000) == 0.00
+
+# ==========================================================
+# Interest Coverage Ratio Tests
+# ==========================================================
+
+def test_interest_coverage_ratio_normal():
+    assert interest_coverage_ratio(1000, 200) == 5.00
+
+
+def test_interest_coverage_ratio_zero_interest():
+    assert interest_coverage_ratio(1000, 0) is None
+
+
+def test_interest_coverage_ratio_none_interest():
+    assert interest_coverage_ratio(1000, None) is None
+
+
+def test_interest_coverage_ratio_none_ebit():
+    assert interest_coverage_ratio(None, 200) is None
+
+
+def test_interest_coverage_ratio_negative_ebit():
+    assert interest_coverage_ratio(-500, 200) == -2.50
+
+# ==========================================================
+# Net Debt Tests
+# ==========================================================
+
+def test_net_debt_normal():
+    assert net_debt(5000, 1200) == 3800.00
+
+
+def test_net_debt_zero_cash():
+    assert net_debt(5000, 0) == 5000.00
+
+
+def test_net_debt_more_cash_than_debt():
+    assert net_debt(3000, 5000) == -2000.00
+
+
+def test_net_debt_none_debt():
+    assert net_debt(None, 1000) is None
+
+
+def test_net_debt_none_cash():
+    assert net_debt(5000, None) is None
+
+# ==========================================================
+# Asset Turnover Ratio Tests
+# ==========================================================
+
+def test_asset_turnover_ratio_normal():
+    assert asset_turnover_ratio(10000, 5000) == 2.00
+
+
+def test_asset_turnover_ratio_zero_assets():
+    assert asset_turnover_ratio(10000, 0) is None
+
+
+def test_asset_turnover_ratio_none_assets():
+    assert asset_turnover_ratio(10000, None) is None
+
+
+def test_asset_turnover_ratio_none_revenue():
+    assert asset_turnover_ratio(None, 5000) is None
+
+
+def test_asset_turnover_ratio_zero_revenue():
+    assert asset_turnover_ratio(0, 5000) == 0.00
