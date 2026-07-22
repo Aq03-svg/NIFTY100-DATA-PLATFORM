@@ -11,6 +11,10 @@ from src.analytics.ratios import (
     net_debt,
     asset_turnover_ratio,
     compound_annual_growth_rate,
+    operating_cash_flow,
+    free_cash_flow,
+    cash_conversion_ratio,
+    operating_cash_flow_margin,
 )
 
 
@@ -256,3 +260,95 @@ def test_cagr_none_ending():
 
 def test_cagr_none_years():
     assert compound_annual_growth_rate(100, 200, None) is None
+
+# ==========================================================
+# Operating Cash Flow (OCF) Tests
+# ==========================================================
+
+def test_operating_cash_flow_normal():
+    assert operating_cash_flow(2500) == 2500.00
+
+
+def test_operating_cash_flow_zero():
+    assert operating_cash_flow(0) == 0.00
+
+
+def test_operating_cash_flow_negative():
+    assert operating_cash_flow(-500) == -500.00
+
+
+def test_operating_cash_flow_none():
+    assert operating_cash_flow(None) is None
+
+
+def test_operating_cash_flow_decimal():
+    assert operating_cash_flow(1234.567) == 1234.57
+
+# ==========================================================
+# Free Cash Flow (FCF) Tests
+# ==========================================================
+
+def test_free_cash_flow_normal():
+    assert free_cash_flow(5000, 1200) == 3800.00
+
+
+def test_free_cash_flow_zero_capex():
+    assert free_cash_flow(5000, 0) == 5000.00
+
+
+def test_free_cash_flow_negative_result():
+    assert free_cash_flow(1000, 2000) == -1000.00
+
+
+def test_free_cash_flow_none_ocf():
+    assert free_cash_flow(None, 500) is None
+
+
+def test_free_cash_flow_none_capex():
+    assert free_cash_flow(5000, None) is None
+
+# ==========================================================
+# Cash Conversion Ratio (CCR) Tests
+# ==========================================================
+
+def test_cash_conversion_ratio_normal():
+    assert cash_conversion_ratio(3000, 2000) == 1.50
+
+
+def test_cash_conversion_ratio_zero_profit():
+    assert cash_conversion_ratio(3000, 0) is None
+
+
+def test_cash_conversion_ratio_none_ocf():
+    assert cash_conversion_ratio(None, 2000) is None
+
+
+def test_cash_conversion_ratio_none_profit():
+    assert cash_conversion_ratio(3000, None) is None
+
+
+def test_cash_conversion_ratio_negative_profit():
+    assert cash_conversion_ratio(3000, -1500) == -2.00
+
+# ==========================================================
+# Operating Cash Flow Margin Tests
+# ==========================================================
+
+def test_operating_cash_flow_margin_normal():
+    assert operating_cash_flow_margin(2500, 10000) == 25.00
+
+
+def test_operating_cash_flow_margin_zero_revenue():
+    assert operating_cash_flow_margin(2500, 0) is None
+
+
+def test_operating_cash_flow_margin_none_ocf():
+    assert operating_cash_flow_margin(None, 10000) is None
+
+
+def test_operating_cash_flow_margin_none_revenue():
+    assert operating_cash_flow_margin(2500, None) is None
+
+
+def test_operating_cash_flow_margin_negative_ocf():
+    assert operating_cash_flow_margin(-1000, 10000) == -10.00

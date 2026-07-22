@@ -215,3 +215,70 @@ def compound_annual_growth_rate(beginning_value, ending_value, years):
     cagr = ((ending_value / beginning_value) ** (1 / years) - 1) * 100
 
     return round(cagr, 2)
+
+def operating_cash_flow(cash_from_operations):
+    """
+    Operating Cash Flow (OCF)
+
+    Returns:
+        float | None
+    """
+
+    if cash_from_operations is None:
+        return None
+
+    return round(cash_from_operations, 2)
+
+def free_cash_flow(operating_cash_flow, capital_expenditure):
+    """
+    Free Cash Flow (FCF)
+
+    Formula:
+        Operating Cash Flow - Capital Expenditure
+
+    Returns:
+        float | None
+    """
+
+    if operating_cash_flow is None or capital_expenditure is None:
+        return None
+
+    return round(operating_cash_flow - capital_expenditure, 2)
+
+def cash_conversion_ratio(operating_cash_flow, net_profit):
+    """
+    Cash Conversion Ratio (CCR)
+
+    Formula:
+        Operating Cash Flow / Net Profit
+
+    Returns:
+        float | None
+    """
+
+    if operating_cash_flow is None or net_profit is None:
+        return None
+
+    if net_profit == 0:
+        return None
+
+    return round(operating_cash_flow / net_profit, 2)
+
+def operating_cash_flow_margin(operating_cash_flow, revenue):
+    """
+    Operating Cash Flow Margin
+
+    Formula:
+        (Operating Cash Flow / Revenue) * 100
+
+    Returns:
+        float | None
+    """
+
+    if operating_cash_flow is None or revenue is None:
+        return None
+
+    if revenue == 0:
+        return None
+
+    return round((operating_cash_flow / revenue) * 100, 2)
