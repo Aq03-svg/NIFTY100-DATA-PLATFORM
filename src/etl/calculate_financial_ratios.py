@@ -5,6 +5,13 @@ Computes all supported financial ratios for every company.
 """
 
 import pandas as pd
+from pathlib import Path
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(levelname)s: %(message)s",
+)
 
 from src.analytics.ratios import (
     net_profit_margin,
@@ -215,40 +222,44 @@ def calculate_financial_ratios(df):
 
     return ratios
 
-if __name__ == "__main__":
+def main():
 
     sample = pd.DataFrame(
-    {
-        "company": ["ABC Ltd", "XYZ Ltd"],
-        "revenue": [10000, 18000],
-        "net_profit": [2000, 3500],
-        "operating_profit": [2500, 4200],
-        "ebit": [2600, 4400],
-        "shareholder_equity": [8000, 15000],
-        "capital_employed": [12000, 18000],
-        "total_assets": [25000, 40000],
-        "total_debt": [5000, 9000],
-        "interest_expense": [200, 400],
-        "cash_and_equivalents": [1500, 2500],
-        "cash_from_operations": [3200, 5100],
-        "capital_expenditure": [700, 900],
-        "revenue_start": [8000, 15000],
-        "revenue_end": [10000, 18000],
-        "years": [2, 2],
-    }
-)
+        {
+            "company": ["ABC Ltd", "XYZ Ltd"],
+            "revenue": [10000, 18000],
+            "net_profit": [2000, 3500],
+            "operating_profit": [2500, 4200],
+            "ebit": [2600, 4400],
+            "shareholder_equity": [8000, 15000],
+            "capital_employed": [12000, 18000],
+            "total_assets": [25000, 40000],
+            "total_debt": [5000, 9000],
+            "interest_expense": [200, 400],
+            "cash_and_equivalents": [1500, 2500],
+            "cash_from_operations": [3200, 5100],
+            "capital_expenditure": [700, 900],
+            "revenue_start": [8000, 15000],
+            "revenue_end": [10000, 18000],
+            "years": [2, 2],
+        }
+    )
 
     result = calculate_financial_ratios(sample)
 
-    from pathlib import Path
+    output_dir = Path("data/processed")
+    output_dir.mkdir(parents=True, exist_ok=True)
 
-output_dir = Path("data/processed")
-output_dir.mkdir(parents=True, exist_ok=True)
+    output_file = output_dir / "financial_ratios.csv"
 
-output_file = output_dir / "financial_ratios.csv"
+    result.to_csv(output_file, index=False)
 
-result.to_csv(output_file, index=False)
+    logging.info("\n%s", result)
 
-print(result)
+    logging.info(
+    "Financial ratios saved to: %s",
+    output_file,
+    )
 
-print(f"\nFinancial ratios saved to: {output_file}")
+if __name__ == "__main__":
+    main()
