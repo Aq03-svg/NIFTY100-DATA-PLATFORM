@@ -23,6 +23,75 @@ from src.analytics.ratios import (
     operating_cash_flow_margin,
 )
 
+REQUIRED_COLUMNS = [
+    "company",
+    "revenue",
+    "net_profit",
+    "operating_profit",
+    "ebit",
+    "shareholder_equity",
+    "capital_employed",
+    "total_assets",
+    "total_debt",
+    "interest_expense",
+    "cash_and_equivalents",
+    "cash_from_operations",
+    "capital_expenditure",
+    "revenue_start",
+    "revenue_end",
+    "years",
+]
+
+NUMERIC_COLUMNS = [
+    "revenue",
+    "net_profit",
+    "operating_profit",
+    "ebit",
+    "shareholder_equity",
+    "capital_employed",
+    "total_assets",
+    "total_debt",
+    "interest_expense",
+    "cash_and_equivalents",
+    "cash_from_operations",
+    "capital_expenditure",
+    "revenue_start",
+    "revenue_end",
+    "years",
+]
+
+def validate_input_dataframe(df):
+    """
+    Validate that the input DataFrame contains all required columns
+    and does not contain missing values.
+    """
+
+    missing_columns = [
+        column
+        for column in REQUIRED_COLUMNS
+        if column not in df.columns
+    ]
+
+    if missing_columns:
+        raise ValueError(
+            f"Missing required columns: {missing_columns}"
+        )
+
+    missing_values = df[REQUIRED_COLUMNS].isnull().sum()
+
+    missing_values = missing_values[missing_values > 0]
+
+    if not missing_values.empty:
+        raise ValueError(
+            f"Missing values found:\n{missing_values}"
+        )
+    
+    for column in NUMERIC_COLUMNS:
+        if not pd.api.types.is_numeric_dtype(df[column]):
+            raise TypeError(
+                f"Column '{column}' must contain numeric values."
+            )
+
 def calculate_financial_ratios(df):
     """
     Calculate financial ratios for every company.
@@ -35,7 +104,7 @@ def calculate_financial_ratios(df):
     -------
     pandas.DataFrame
     """
-
+    validate_input_dataframe(df)
     ratios = df.copy()
 
     ratios["net_profit_margin"] = ratios.apply(
