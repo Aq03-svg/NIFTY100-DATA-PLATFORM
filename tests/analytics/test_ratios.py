@@ -10,6 +10,7 @@ from src.analytics.ratios import (
     interest_coverage_ratio,
     net_debt,
     asset_turnover_ratio,
+    compound_annual_growth_rate,
 )
 
 
@@ -220,3 +221,38 @@ def test_asset_turnover_ratio_none_revenue():
 
 def test_asset_turnover_ratio_zero_revenue():
     assert asset_turnover_ratio(0, 5000) == 0.00
+
+# ==========================================================
+# Compound Annual Growth Rate (CAGR) Tests
+# ==========================================================
+
+def test_cagr_normal():
+    assert compound_annual_growth_rate(100, 200, 5) == 14.87
+
+
+def test_cagr_same_value():
+    assert compound_annual_growth_rate(100, 100, 5) == 0.00
+
+
+def test_cagr_zero_beginning():
+    assert compound_annual_growth_rate(0, 200, 5) is None
+
+
+def test_cagr_negative_beginning():
+    assert compound_annual_growth_rate(-100, 200, 5) is None
+
+
+def test_cagr_zero_years():
+    assert compound_annual_growth_rate(100, 200, 0) is None
+
+
+def test_cagr_none_beginning():
+    assert compound_annual_growth_rate(None, 200, 5) is None
+
+
+def test_cagr_none_ending():
+    assert compound_annual_growth_rate(100, None, 5) is None
+
+
+def test_cagr_none_years():
+    assert compound_annual_growth_rate(100, 200, None) is None

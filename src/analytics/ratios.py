@@ -187,3 +187,31 @@ def asset_turnover_ratio(revenue, average_total_assets):
         return None
 
     return round(revenue / average_total_assets, 2)
+
+def compound_annual_growth_rate(beginning_value, ending_value, years):
+    """
+    Compound Annual Growth Rate (CAGR)
+
+    Formula:
+        ((Ending Value / Beginning Value) ** (1 / Years) - 1) * 100
+
+    Returns:
+        float | None
+    """
+
+    if (
+        beginning_value is None
+        or ending_value is None
+        or years is None
+    ):
+        return None
+
+    if beginning_value <= 0:
+        return None
+
+    if years <= 0:
+        return None
+
+    cagr = ((ending_value / beginning_value) ** (1 / years) - 1) * 100
+
+    return round(cagr, 2)
