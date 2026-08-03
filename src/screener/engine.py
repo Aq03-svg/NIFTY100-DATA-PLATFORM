@@ -1,3 +1,4 @@
+from src.screener.scoring import calculate_quality_score
 from pathlib import Path
 
 import logging
@@ -13,10 +14,14 @@ CONFIG_PATH = Path("config/screener_config.yaml")
 COLUMN_MAPPING = {
     "roe": "return_on_equity",
     "roce": "return_on_capital_employed",
+    "roa": "return_on_assets",
     "npm": "net_profit_margin",
     "debt_to_equity": "debt_to_equity",
     "free_cash_flow": "free_cash_flow",
     "revenue_cagr": "revenue_cagr",
+    "cash_conversion_ratio": "cash_conversion_ratio",
+    "operating_cash_flow_margin": "operating_cash_flow_margin",
+    "asset_turnover_ratio": "asset_turnover_ratio",
 }
 
 
@@ -99,11 +104,14 @@ def main():
 
     df = load_financial_ratios()
 
-    filters = config["quality_compounder"]
+    preset = "quality_compounder"
+
+    filters = config[preset]
 
     filtered = apply_filters(df, filters)
+    filtered = calculate_quality_score(filtered)
 
-    logging.info("Loaded preset: quality_compounder")
+    logging.info("Loaded preset: %s", preset)
     logging.info("\n%s", filtered)
 
 if __name__ == "__main__":

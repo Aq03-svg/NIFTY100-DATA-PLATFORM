@@ -1,9 +1,28 @@
 quality_compounder:
-
   roe_min: 15
-
   debt_to_equity_max: 1.0
+  free_cash_flow_min: 0
+  revenue_cagr_min: 10
 
+growth_accelerator:
+  revenue_cagr_min: 10
+  roe_min: 20
   free_cash_flow_min: 0
 
-  revenue_cagr_min: 10
+capital_efficient:
+  roce_min: 20
+  roe_min: 18
+  debt_to_equity_max: 0.5
+
+cash_generator:
+  free_cash_flow_min: 1000
+  cash_conversion_ratio_min: 1.2
+
+asset_efficient:
+  asset_turnover_ratio_min: 0.40
+  return_on_assets_min: 8
+
+balanced_quality:
+  roe_min: 20
+  revenue_cagr_min: 8
+  operating_cash_flow_margin_min: 20
