@@ -24,7 +24,6 @@ def _get_connection():
     """
     Create a SQLite database connection.
     """
-
     return sqlite3.connect(DB_PATH)
 
 
@@ -36,10 +35,6 @@ def _get_connection():
 def get_companies():
     """
     Return all companies.
-
-    Returns
-    -------
-    pandas.DataFrame
     """
 
     query = """
@@ -79,11 +74,8 @@ def get_ratios(ticker, year=None):
         Company ID / ticker.
 
     year : str or int, optional
-        Financial year. If omitted, all available years are returned.
-
-    Returns
-    -------
-    pandas.DataFrame
+        Financial year.
+        If omitted, all available years are returned.
     """
 
     query = """
@@ -135,15 +127,6 @@ def get_ratios(ticker, year=None):
 def get_pl(ticker):
     """
     Return Profit & Loss data for a company.
-
-    Parameters
-    ----------
-    ticker : str
-        Company ID / ticker.
-
-    Returns
-    -------
-    pandas.DataFrame
     """
 
     query = """
@@ -186,15 +169,6 @@ def get_pl(ticker):
 def get_bs(ticker):
     """
     Return Balance Sheet data for a company.
-
-    Parameters
-    ----------
-    ticker : str
-        Company ID / ticker.
-
-    Returns
-    -------
-    pandas.DataFrame
     """
 
     query = """
@@ -235,15 +209,6 @@ def get_bs(ticker):
 def get_cf(ticker):
     """
     Return Cash Flow data for a company.
-
-    Parameters
-    ----------
-    ticker : str
-        Company ID / ticker.
-
-    Returns
-    -------
-    pandas.DataFrame
     """
 
     query = """
@@ -278,10 +243,6 @@ def get_cf(ticker):
 def get_sectors():
     """
     Return sector information for all companies.
-
-    Returns
-    -------
-    pandas.DataFrame
     """
 
     query = """
@@ -299,7 +260,10 @@ def get_sectors():
     """
 
     with _get_connection() as conn:
-        return pd.read_sql_query(query, conn)
+        return pd.read_sql_query(
+            query,
+            conn,
+        )
 
 
 # ---------------------------------------------------------------------
@@ -315,10 +279,6 @@ def get_peers(group_name):
     ----------
     group_name : str
         Peer group name.
-
-    Returns
-    -------
-    pandas.DataFrame
     """
 
     query = """
@@ -345,13 +305,13 @@ def get_peers(group_name):
 
 
 # ---------------------------------------------------------------------
-# Valuation
+# Pros and Cons
 # ---------------------------------------------------------------------
 
 @st.cache_data(ttl=600)
-def get_valuation(ticker):
+def get_pros_and_cons(ticker):
     """
-    Return market and valuation data for a company.
+    Return pros and cons for a company.
 
     Parameters
     ----------
@@ -361,6 +321,73 @@ def get_valuation(ticker):
     Returns
     -------
     pandas.DataFrame
+        Columns:
+            company_id
+            company_name
+            pros
+            cons
+    """
+
+    query = """
+        SELECT
+            pc.company_id,
+            c.company_name,
+            pc.pros,
+            pc.cons
+        FROM prosandcons pc
+        LEFT JOIN companies c
+            ON pc.company_id = c.id
+        WHERE pc.company_id = ?
+    """
+
+    with _get_connection() as conn:
+        return pd.read_sql_query(
+            query,
+            conn,
+            params=[ticker],
+        )
+
+
+# ---------------------------------------------------------------------
+# Analysis
+# ---------------------------------------------------------------------
+
+@st.cache_data(ttl=600)
+def get_analysis(ticker):
+    """
+    Return company analysis metrics.
+    """
+
+    query = """
+        SELECT
+            a.company_id,
+            c.company_name,
+            a.compounded_sales_growth,
+            a.compounded_profit_growth,
+            a.stock_price_cagr,
+            a.roe
+        FROM analysis a
+        LEFT JOIN companies c
+            ON a.company_id = c.id
+        WHERE a.company_id = ?
+    """
+
+    with _get_connection() as conn:
+        return pd.read_sql_query(
+            query,
+            conn,
+            params=[ticker],
+        )
+
+
+# ---------------------------------------------------------------------
+# Valuation
+# ---------------------------------------------------------------------
+
+@st.cache_data(ttl=600)
+def get_valuation(ticker):
+    """
+    Return market and valuation data for a company.
     """
 
     query = """
@@ -420,6 +447,9 @@ if __name__ == "__main__":
 
         print("\nCash Flow:")
         print(get_cf(ticker).head())
+
+        print("\nPros and Cons:")
+        print(get_pros_and_cons(ticker).head())
 
         print("\nValuation:")
         print(get_valuation(ticker).head())
