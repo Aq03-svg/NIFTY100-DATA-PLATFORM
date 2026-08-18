@@ -1,0 +1,16 @@
+company_id,metric_type,period_years,parsed_value_pct,computed_value_pct,divergence_pct,validation_status,start_year,end_year
+HDFCBANK,compounded_sales_growth,10,21.0,20.89,0.11,PASS,2014,2024
+SBILIFE,compounded_sales_growth,5,24.0,24.23,0.23,PASS,2019,2024
+SBILIFE,compounded_sales_growth,3,17.0,17.24,0.24,PASS,2021,2024
+TCS,compounded_sales_growth,10,11.0,11.4,0.4,PASS,2014,2024
+TCS,compounded_sales_growth,5,10.0,10.46,0.46,PASS,2019,2024
+TCS,compounded_sales_growth,3,14.0,13.63,0.37,PASS,2021,2024
+WIPRO,compounded_sales_growth,10,8.0,7.53,0.47,PASS,2014,2024
+WIPRO,compounded_sales_growth,5,9.0,8.75,0.25,PASS,2019,2024
+WIPRO,compounded_sales_growth,3,13.0,13.17,0.17,PASS,2021,2024
+HDFCBANK,compounded_sales_growth,5,22.0,21.95,0.05,PASS,2019,2024
+HDFCBANK,compounded_sales_growth,3,30.0,30.19,0.19,PASS,2021,2024
+INFY,compounded_sales_growth,10,12.0,11.85,0.15,PASS,2014,2024
+INFY,compounded_sales_growth,5,13.0,13.2,0.2,PASS,2019,2024
+INFY,compounded_sales_growth,3,5.0,15.22,10.22,MANUAL_REVIEW,2021,2024
+SBILIFE,compounded_sales_growth,10,23.0,22.56,0.44,PASS,2014,2024
